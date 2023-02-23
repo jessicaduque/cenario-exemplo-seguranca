@@ -10,7 +10,7 @@ public class FirstPersonCam : MonoBehaviour
     public Transform characterBody;
     public Transform characterHead;
 
-    float rotationX = 0;
+    float rotationX = 180;
     float rotationY = 0;
 
     public float SensibilityX = 0.5f;
@@ -27,7 +27,8 @@ public class FirstPersonCam : MonoBehaviour
 
     void Start()
     {
-
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Corpo>().IfCanMove(1);
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FirstPersonCam>().IfCanMove(1);
     }
 
     private void LateUpdate()

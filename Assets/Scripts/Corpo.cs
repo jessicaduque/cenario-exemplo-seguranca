@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Corpo : MonoBehaviour
 {
     // Para determinar se o player pode se mexer ou não
     bool canMove = true;
+
+    public GameObject FinPanel;
+    public Text AvisoTanques;
 
     CharacterController controller;
 
@@ -72,6 +76,33 @@ public class Corpo : MonoBehaviour
         else
         {
             canMove = false;
+        }
+    }
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "PontoFinal")
+        {
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<ControleCanvas>().DesfixarMousePrenderPers();
+            FinPanel.SetActive(true);
+        }
+    }
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.tag == "Escada")
+        {
+            Debug.Log("NA ESCADA");
+            vertical = new Vector3(0, 0.55f, 0);
+        }
+        if (col.gameObject.tag == "cimatanque")
+        {
+            AvisoTanques.gameObject.SetActive(true);
+        }
+    }
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "cimatanque")
+        {
+            AvisoTanques.gameObject.SetActive(false);
         }
     }
 }
