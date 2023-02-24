@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f528287390efc14c8ddd1921ce0788b, type: 3}
   m_Name: homemfumar
   m_EditorClassIdentifier: 
-  itemName: 
+  titulo: Fumar dentro do ambiente de trabalho
+  descricao: "Al\xE9m de ser anti-higi\xEAnico, dependendo de onde for realizado,
+    fumar pode causar inc\xEAndio. Visto que, existem processos na fabrica\xE7\xE3o
+    que liberam gases inflam\xE1veis, al\xE9m de caixotes de madeira presentes no
+    ambiente, que poderiam pegar fogo ao entrar em contado com o resto do cigarro
+    ainda aceso, descartado no ch\xE3o."
+  medida: "N\xE3o fumar dentro do local de trabalho. Caso algu\xE9m esteja fumando
+    em tal ambiente, acione o respons\xE1vel."
+  nome: fumar

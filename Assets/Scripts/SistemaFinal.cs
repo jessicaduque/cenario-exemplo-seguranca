@@ -8,26 +8,25 @@ public class SistemaFinal : MonoBehaviour
     bool epi = false;
     bool fumar = false;
     bool ventilacao = false;
-    bool sinalizacao = false;
+    bool sinalizacaoCima = false;
+    bool sinalizacaoLateral = false;
 
-    bool[] erros = new bool[4];
+    bool[] erros = new bool[5];
+    public Image[] checkMarks;
+
+    public Sprite checkPreenchido;
 
     int somaPontos = 0;
-    //int objetivosQuant = 0;
+    int objetivosQuant = 0;
 
     public GameObject ResultadosPanel;
     public Text pontuacao;
     public Text descricaoPont;
-    //public Text objetivosQuantText;
     string feedback = "";
 
     // Start is called before the first frame update
     void Start()
     {
-        erros[0] = epi;
-        erros[1] = fumar;
-        erros[2] = ventilacao;
-        erros[3] = sinalizacao;
         pontuacao.text = null;
         descricaoPont.text = null;
         //objetivosQuantText.text = "Objetivos: 0/4";
@@ -38,31 +37,43 @@ public class SistemaFinal : MonoBehaviour
     {
     }
 
-    public void ErrosReconhecidos(string titulo)
+    public void ErrosReconhecidos(string nome)
     {
-        if(titulo == "Falta de uso de luvas e de touca")
+        if(nome == "epi")
         {
             epi = true;
+        }
+        if (nome == "fumar")
+        {
+            fumar = true;
+        }
+        if (nome == "tanquecima")
+        {
+            sinalizacaoCima = true;
+        }
+        if (nome == "tanquelateral")
+        {
+            sinalizacaoLateral = true;
+        }
+        if (nome == "ventilacao")
+        {
+            ventilacao = true;
         }
     }
 
     public void CalcularResulado()
     {
-        if (epi)
+        erros[0] = fumar;
+        erros[1] = epi;
+        erros[2] = ventilacao;
+        erros[3] = sinalizacaoCima;
+        erros[4] = sinalizacaoLateral;
+        for (int k = 0; k < 5; k++)
         {
-            somaPontos += 25;
-        }
-        if (fumar)
-        {
-            somaPontos += 25;
-        }
-        if (ventilacao)
-        {
-            somaPontos += 25;
-        }
-        if (sinalizacao)
-        {
-            somaPontos += 25;
+            if (erros[k])
+            {
+                somaPontos += 20;
+            }
         }
     }
 
@@ -84,9 +95,13 @@ public class SistemaFinal : MonoBehaviour
         {
             feedback += "- Faltou reconhecer uma inadequação do ambiente, a falta de ventilação apropriada.\n";
         }
-        if (!sinalizacao)
+        if (!sinalizacaoCima || !sinalizacaoLateral)
         {
-            feedback += "- Faltou reconhecer que um dos tanques de fermentação das uvas não possuia a sinalização necessária.\n";
+            feedback += "- Passou despercebido nos tanques de fermentação das uvas alguma sinalização não existente, e necessária.\n";
+        }
+        if(somaPontos == 100)
+        {
+            feedback = "Parabéns, você encontrou todos os erros de segurança no ambiente desta fase.\nTambém, fez dentro de um ótimo tempo.";
         }
     }
 
@@ -98,16 +113,33 @@ public class SistemaFinal : MonoBehaviour
         descricaoPont.gameObject.SetActive(true);
     }
     
-    /*
     public void QuantidadeObjetivos()
     {
-        for(int i = 0; i < 4; i++)
+        int i;
+        int j;
+        erros[0] = fumar;
+        erros[1] = epi;
+        erros[2] = ventilacao;
+        erros[3] = sinalizacaoCima;
+        erros[4] = sinalizacaoLateral;
+
+        for (i = 0; i < 5; i++)
         {
             if (erros[i])
             {
                 objetivosQuant++;
             }
         }
-        objetivosQuantText.text = "Objetivos: " + objetivosQuant.ToString() + "/4";
-    }*/
+        if(i == 5)
+        {
+            for (j = 0; j < objetivosQuant; j++)
+            {
+                checkMarks[j].sprite = checkPreenchido;
+            }
+            if(j == objetivosQuant)
+            {
+                objetivosQuant = 0;
+            }
+        }
+    }
 }

@@ -28,7 +28,7 @@ public class Corpo : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         gravity = (-2 * maxJumpHeight) / (timeToMaxHeight * timeToMaxHeight);
-        jumpSpeed = (2 * maxJumpHeight) / (timeToMaxHeight);
+        jumpSpeed = (2.1f * maxJumpHeight) / (timeToMaxHeight);
 
     }
 
@@ -90,7 +90,6 @@ public class Corpo : MonoBehaviour
     {
         if (col.gameObject.tag == "Escada")
         {
-            Debug.Log("NA ESCADA");
             vertical = new Vector3(0, 0.55f, 0);
         }
         if (col.gameObject.tag == "cimatanque")

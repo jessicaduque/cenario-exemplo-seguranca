@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: homemepi
   m_EditorClassIdentifier: 
   titulo: Falta de uso de luvas e de touca
-  descricao: "Equipamento de trabalho necess\xE1rio \u2013 o respons\xE1vel dever\xE1
-    fornecer \xE0s equipas de trabalho equipamento de protec\xE7\xE3o individual
-    (m\xE1scaras respirat\xF3rias, arn\xEAs, corda de seguran\xE7a e ponto de ancoragem)."
+  descricao: "Por mexer com alimentos, a higiene se torna algo fundamental. O uso
+    correto de EPIs garante o menor contato direto com as uvas e evita a queda de
+    pelos no ambiente. Al\xE9m disso, protege contra cortes e machucados enquanto
+    trabalha."
   medida: "Sempre fa\xE7a uso das luvas ao mexer com as uvas. Al\xE9m disso, nos
     ambientes da vin\xEDcola, utilizar sempre a touca."
+  nome: epi

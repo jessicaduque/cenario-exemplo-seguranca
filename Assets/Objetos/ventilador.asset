@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f528287390efc14c8ddd1921ce0788b, type: 3}
   m_Name: ventilador
   m_EditorClassIdentifier: 
-  titulo: socorro
-  descricao: funcionu
-  medida: yay
+  titulo: "Falta de ventila\xE7\xE3o na \xE1rea da sele\xE7\xE3o de uvas"
+  descricao: "Realizar trabalhos em espa\xE7o confinado sem a ado\xE7\xE3o de medidas
+    para eliminar ou controlar os riscos que possam afetar a seguran\xE7a e sa\xFAde
+    dos trabalhadores no ar. Para isso, ventila\xE7\xE3o \xE9 fundamental."
+  medida: "Todo dia, certifique-se de que o ambiente tenha ventila\xE7\xE3o adequada.
+    Se necess\xE1rio, acione o respons\xE1vel."
+  nome: ventilacao

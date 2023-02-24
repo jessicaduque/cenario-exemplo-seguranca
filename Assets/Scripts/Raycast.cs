@@ -9,7 +9,7 @@ public class Raycast : MonoBehaviour
     public Text titulo;
     public Text descricao;
     public Text medida;
-    public Image checkmark;
+    public GameObject checkmarkPanel;
     float timerCheck = 0.0f;
 
     void Start()
@@ -32,20 +32,20 @@ public class Raycast : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     timerCheck = 0;
-                    checkmark.gameObject.SetActive(true);
+                    checkmarkPanel.gameObject.SetActive(true);
                     GameObject.FindGameObjectWithTag("Canvas").GetComponent<ControleCanvas>().DesfixarMousePrenderPers();
                     TextosPanel.SetActive(true);
                     titulo.text = hit.transform.GetComponent<ObjectType>().objecType.titulo;
                     descricao.text = hit.transform.GetComponent<ObjectType>().objecType.descricao;
                     medida.text = hit.transform.GetComponent<ObjectType>().objecType.medida;
-                    GameObject.FindGameObjectWithTag("Canvas").GetComponent<SistemaFinal>().ErrosReconhecidos(titulo.text);
+                    GameObject.FindGameObjectWithTag("Canvas").GetComponent<SistemaFinal>().ErrosReconhecidos(hit.transform.GetComponent<ObjectType>().objecType.nome);
                     GameObject.FindGameObjectWithTag("Canvas").GetComponent<SistemaFinal>().QuantidadeObjetivos();
                 }
             }
 
-        if(timerCheck > 5)
+        if(timerCheck > 3)
         {
-            checkmark.gameObject.SetActive(false);
+            checkmarkPanel.gameObject.SetActive(false);
         }
     }
 

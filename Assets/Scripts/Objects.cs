@@ -9,4 +9,5 @@ public class Objects : ScriptableObject
     public string titulo;
     public string descricao;
     public string medida;
+    public string nome;
 }

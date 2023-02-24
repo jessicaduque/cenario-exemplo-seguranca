@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f528287390efc14c8ddd1921ce0788b, type: 3}
+  m_Name: tanquecima
+  m_EditorClassIdentifier: 
+  titulo: "Sinaliza\xE7\xE3o n\xE3o feita em tanque"
+  descricao: "A gest\xE3o de seguran\xE7a e sa\xFAde do trabalho em espa\xE7os confinados,
+    como preconiza a NR 33 do MTE, n\xE3o deve ser negligenciado. A falta de sinaliza\xE7\xE3o
+    ou bloqueamento de \xE1reas de risco pode provocar acidentes, tanto para trabalhadores
+    veteranos quanto para novatos, de acordo com a Se\xE7\xE3o de Seguran\xE7a e
+    Sa\xFAde do Trabalho \u2013 SEGUR."
+  medida: "Pedir \xE0 respons\xE1veis a coloca\xE7\xE3o dos avisos devidamente sinalizados,
+    bloqueados e iluminados."
+  nome: tanquecima
