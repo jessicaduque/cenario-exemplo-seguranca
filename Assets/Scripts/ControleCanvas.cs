@@ -43,4 +43,9 @@ public class ControleCanvas : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void SairDoJogo()
+    {
+        Application.Quit();
+    }
+
 }

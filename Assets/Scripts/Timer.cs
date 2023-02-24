@@ -45,21 +45,14 @@ public class Timer : MonoBehaviour
 
                 segundos -= 1 * Time.deltaTime;
 
-                if (segundos < 10 && minutos < 10)
+
+                if (segundos < 10)
                 {
                     countdown.text = "Tempo: " + "0" + minutos.ToString() + ":0" + segundos.ToString("0");
                 }
-                else if (segundos < 10)
-                {
-                    countdown.text = "Tempo: " + minutos.ToString() + ":0" + segundos.ToString("0");
-                }
-                else if (minutos < 10)
-                {
-                    countdown.text = "Tempo: " + "0" + minutos.ToString() + ":" + segundos.ToString("0");
-                }
                 else
                 {
-                    countdown.text = "Tempo: " + minutos.ToString() + ":" + segundos.ToString("0");
+                    countdown.text = "Tempo: " + "0" + minutos.ToString() + ":" + segundos.ToString("0");
                 }
             }
             else
@@ -75,8 +68,9 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public int TempoGasto()
+    public float TempoGasto()
     {
-        return 4 - minutos;
+        int seg = (int)segundos;
+        return (3 - minutos) + (0.01f * (60 - seg));
     }
 }

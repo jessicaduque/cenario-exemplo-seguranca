@@ -82,6 +82,7 @@ public class Corpo : MonoBehaviour
     {
         if (col.gameObject.tag == "PontoFinal")
         {
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<SistemaFinal>().CalcularTempo();
             GameObject.FindGameObjectWithTag("Canvas").GetComponent<ControleCanvas>().DesfixarMousePrenderPers();
             FinPanel.SetActive(true);
         }

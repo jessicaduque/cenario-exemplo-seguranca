@@ -18,18 +18,20 @@ public class SistemaFinal : MonoBehaviour
 
     int somaPontos = 0;
     int objetivosQuant = 0;
+    float tempoGasto = 0.0f;
 
     public GameObject ResultadosPanel;
     public Text pontuacao;
     public Text descricaoPont;
     string feedback = "";
 
+    public AudioClip SomCheck;
+
     // Start is called before the first frame update
     void Start()
     {
         pontuacao.text = null;
         descricaoPont.text = null;
-        //objetivosQuantText.text = "Objetivos: 0/4";
     }
 
     // Update is called once per frame
@@ -63,17 +65,37 @@ public class SistemaFinal : MonoBehaviour
 
     public void CalcularResulado()
     {
+        int k;
         erros[0] = fumar;
         erros[1] = epi;
         erros[2] = ventilacao;
         erros[3] = sinalizacaoCima;
         erros[4] = sinalizacaoLateral;
-        for (int k = 0; k < 5; k++)
+        for (k = 0; k < 5; k++)
         {
             if (erros[k])
             {
                 somaPontos += 20;
             }
+        }
+        if(k == 5)
+        {
+            if(tempoGasto > 1.4)
+            {
+                if (tempoGasto < 3)
+                {
+                    somaPontos -= 15;
+                }
+                else
+                {
+                    somaPontos -= 30;
+                }
+            }
+            if(somaPontos < 0)
+            {
+                somaPontos = 0;
+            }
+            
         }
     }
 
@@ -101,8 +123,24 @@ public class SistemaFinal : MonoBehaviour
         }
         if(somaPontos == 100)
         {
-            feedback = "Parabéns, você encontrou todos os erros de segurança no ambiente desta fase.\nTambém, fez dentro de um ótimo tempo.";
+            feedback = "Parabéns, você encontrou todos os erros de segurança no ambiente desta fase.\n";
         }
+
+        // Questão do tempo
+        if (tempoGasto < 1.4)
+        {
+            feedback += "- Você obteve um ótimo tempo para fazer a análise, parabéns!\n";
+        }
+        else if(tempoGasto < 3)
+        {
+            feedback += "- Você foi um pouco lento para fazer a análise da fase. Tente ser mais eficiente.\n";
+        }
+        else
+        {
+            feedback += "- Mesmo sem pressa de checar o ambiente, é sempre bom fazer uma análise eficiente, já sabendo quais fatores podem estar erradas. Assim, você demorou demais para completar a fase.\n";
+        }
+
+
     }
 
     public void MostrarResultados()
@@ -134,6 +172,11 @@ public class SistemaFinal : MonoBehaviour
         {
             for (j = 0; j < objetivosQuant; j++)
             {
+
+                if (checkMarks[j].sprite != checkPreenchido)
+                {
+                    ControlaAudio.instancia.PlayOneShot(SomCheck);
+                }
                 checkMarks[j].sprite = checkPreenchido;
             }
             if(j == objetivosQuant)
@@ -141,5 +184,10 @@ public class SistemaFinal : MonoBehaviour
                 objetivosQuant = 0;
             }
         }
+    }
+
+    public void CalcularTempo()
+    {
+        tempoGasto = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>().TempoGasto();
     }
 }
